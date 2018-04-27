@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Game</title>
+</head>
+<body>
+	<div id="banner_container">
+		<div id="container"></div>
+		<div class="food" id="banana"></div>
+		<div class="food" id="cabbage"></div>
+		<div class="food" id="tomato"></div>
+		<div class="food" id="cake"></div>
+		<div class="food" id="chips"></div>
+		<div class="food" id="chocolate"></div>
+		<div class="food" id="salad"></div>
+		<div class="food" id="hamburger"></div>
+
+		<button onclick="part4()">Pick one!</button>
+		
+	</div>
+
+
+
+	<style type="text/css">
+		#banner_container {
+			background: url(../image/bc.jpg);
+			width: 800px;
+			height: 600px;
+			
+		}
+
+		#container {
+
+			background: url(../image/fridge.png) no-repeat ;
+			height: 338px;
+			width: 400px;
+
+			position: absolute;
+			top:280px;
+			left:430px;
+		}
+
+		.food {
+			margin: 0;
+			padding: 0;
+			background-size: cover;
+			background-position: 50% 50%;
+			height: 150px;
+			width: 150px;
+		}
+
+		.food:hover {
+			opacity: 0.85;
+			box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+			transform: scale(1.05);
+		}
+
+
+		#banana {
+			background: url(../image/banana.png) no-repeat center;
+
+
+			position: absolute;
+			top:30px;
+			left:40px;
+
+		}
+
+		#cabbage {
+			background: url(../image/cabbage.png) no-repeat center;
+
+
+			position: absolute;
+			top:30px;
+			left:280px;
+		}
+
+		#tomato {
+			background: url(../image/tomato.png) no-repeat center;
+
+
+			position: absolute;
+			top:30px;
+			left:520px;
+		}
+
+		#cake {
+			background: url(../image/cake.png) no-repeat center;
+
+
+			position: absolute;
+			top:180px;
+			left:40px;
+		}
+
+
+
+		#chips {
+			background: url(../image/chips.png) no-repeat center;
+
+
+			position: absolute;
+			top:170px;
+			left:280px;
+		}
+
+
+		#chocolate {
+			background: url(../image/chocolate.png) no-repeat center;
+
+
+			position: absolute;
+			top:170px;
+			left:500px;
+		}
+
+
+		#salad {
+			background: url(../image/salad.png) no-repeat center;
+
+
+			position: absolute;
+			top:350px;
+			left:40px;
+		}
+
+
+		#hamburger {
+			background: url(../image/hamburger.png) no-repeat center;
+
+
+			position: absolute;
+			top:340px;
+			left:250px;
+		}
+
+		
+		button {
+
+			background-color: #4CAF50;
+			border: none;
+			color: black;
+			position: absolute;
+			top: 520px;
+			left: 60px;
+			padding: 15px 15px;
+			text-align: center;
+			display: inline-block;
+			font-size: 16px;
+
+			transition-duration: 0.4s;
+			cursor: pointer;
+
+			box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+		}
+
+		button:hover {
+
+			background-color: #4CAF50;
+			color: white;
+			box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+		}
+	</style>
+
+	<script type="text/javascript">
+		function part4() {
+			window.location = "game_page3.html";
+		}
+		
+	</script>
+
+
+
+
+</body>
+</html>

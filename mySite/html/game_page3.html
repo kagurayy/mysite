@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Game</title>
+	<script src="js/main.js" type="module"></script>
+</head>
+<body>
+	<div id="home">	</div>
+
+	<div class="food" id="cabbage"></div>
+
+	<button onclick="get_fat()">feed</button>
+
+	<style type="text/css">
+		#home {
+			background: url(../image/chick1.jpg) no-repeat;
+			width: 800px;
+			height: 597px;
+		}
+
+		.food {
+			margin: 0;
+			padding: 0;
+			background-size: cover;
+			background-position: 50% 50%;
+			height: 150px;
+			width: 150px;
+		}
+
+		.food:hover {
+			opacity: 0.85;
+			box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+			transform: scale(1.05);
+		}
+
+		#cabbage {
+			background: url(../image/cabbage.png) no-repeat center;
+
+
+			position: absolute;
+			top:130px;
+			left:30px;
+		}
+
+
+	</style>
+
+	<script type="text/javascript">
+		var cabbage = document.getElementById('cabbage');
+		console.log(cabbage);
+		function get_fat() {
+			window.location = "game_getFat.html";
+		}
+	</script>
+
+
+
+
+</body>
+</html>

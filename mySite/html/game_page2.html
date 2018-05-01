@@ -1,176 +1,108 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Game</title>
-</head>
-<body>
-	<div id="banner_container">
-		<div id="container"></div>
-		<div class="food" id="banana"></div>
-		<div class="food" id="cabbage"></div>
-		<div class="food" id="tomato"></div>
-		<div class="food" id="cake"></div>
-		<div class="food" id="chips"></div>
-		<div class="food" id="chocolate"></div>
-		<div class="food" id="salad"></div>
-		<div class="food" id="hamburger"></div>
+	<head>
+		<title>Game</title>
+	</head>
+	<body>
+		<div class="grid-container">
+			<div class="item1"></div>
+			<div class="item2"></div>
+			<div class="item3"></div>
+			<div class="item4"></div>
+			<div class="item5"></div>
+			<div class="item6"></div>
+			<div class="item7"></div>
+			<div class="item8"></div>
+			<div class="item9"></div>
+			<div class="item10"></div>
 
-		<button onclick="part4()">Pick one!</button>
-		
-	</div>
-
-
-
-	<style type="text/css">
-		#banner_container {
-			background: url(../image/bc.jpg);
-			width: 800px;
-			height: 600px;
+			<!-- <button onclick="part4()">next</button> -->
 			
-		}
+		</div>
 
-		#container {
+		<style type="text/css">
+			body {
+				margin: 0;
+			}
 
-			background: url(../image/fridge.png) no-repeat ;
-			height: 338px;
-			width: 400px;
+			.grid-container {
 
-			position: absolute;
-			top:280px;
-			left:430px;
-		}
+				display: grid;
+				grid-template-areas: 
+				'. . . .'
+				'. . . .'
+				'chick chick myArea myArea'
+				'chick chick myArea myArea'
+				;
+				grid-gap: 10px;
+				background-color: pink;
 
-		.food {
-			margin: 0;
-			padding: 0;
-			background-size: cover;
-			background-position: 50% 50%;
-			height: 150px;
-			width: 150px;
-		}
+				width: 70vw;
+				height: 100vh;
+				background-size: contain;
+				padding: 10px;
+				box-sizing: border-box;
 
-		.food:hover {
-			opacity: 0.85;
-			box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-			transform: scale(1.05);
-		}
+			}
 
 
-		#banana {
+			.item1 {
 			background: url(../image/banana.png) no-repeat center;
 
+			}
 
-			position: absolute;
-			top:30px;
-			left:40px;
+			.item2 {
+				background: url(../image/cabbage.png) no-repeat center;
+			}
 
-		}
+			.item3 {
+				background: url(../image/tomato.png) no-repeat center;
 
-		#cabbage {
-			background: url(../image/cabbage.png) no-repeat center;
+			}
 
+			.item4 {
+				background: url(../image/salad.png) no-repeat center;
 
-			position: absolute;
-			top:30px;
-			left:280px;
-		}
-
-		#tomato {
-			background: url(../image/tomato.png) no-repeat center;
-
-
-			position: absolute;
-			top:30px;
-			left:520px;
-		}
-
-		#cake {
-			background: url(../image/cake.png) no-repeat center;
-
-
-			position: absolute;
-			top:180px;
-			left:40px;
-		}
+			}
 
 
 
-		#chips {
-			background: url(../image/chips.png) no-repeat center;
+			.item5 {
+				background: url(../image/chips.png) no-repeat center;
+
+			}
 
 
-			position: absolute;
-			top:170px;
-			left:280px;
-		}
+			.item6 {
+				background: url(../image/chocolate.png) no-repeat center;
+
+			}
 
 
-		#chocolate {
-			background: url(../image/chocolate.png) no-repeat center;
+			.item7 {
+				background: url(../image/cake.png) no-repeat center;
+
+			}
 
 
-			position: absolute;
-			top:170px;
-			left:500px;
-		}
+			.item8 {
+				background: url(../image/hamburger.png) no-repeat center;
 
+			}
 
-		#salad {
-			background: url(../image/salad.png) no-repeat center;
+			.item10 {
+				grid-area: myArea;
+				background: url(../image/fridge.png) no-repeat right;
+				background-size: contain;
+			}
 
+			.item9 {
+				grid-area: chick;
+				background: url(../image/chick.png) no-repeat center;
+				background-size: contain;
+			}
+			
+		</style>
 
-			position: absolute;
-			top:350px;
-			left:40px;
-		}
-
-
-		#hamburger {
-			background: url(../image/hamburger.png) no-repeat center;
-
-
-			position: absolute;
-			top:340px;
-			left:250px;
-		}
-
-		
-		button {
-
-			background-color: #4CAF50;
-			border: none;
-			color: black;
-			position: absolute;
-			top: 520px;
-			left: 60px;
-			padding: 15px 15px;
-			text-align: center;
-			display: inline-block;
-			font-size: 16px;
-
-			transition-duration: 0.4s;
-			cursor: pointer;
-
-			box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
-		}
-
-		button:hover {
-
-			background-color: #4CAF50;
-			color: white;
-			box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
-		}
-	</style>
-
-	<script type="text/javascript">
-		function part4() {
-			window.location = "game_page3.html";
-		}
-		
-	</script>
-
-
-
-
-</body>
+	</body>
 </html>

@@ -5,16 +5,51 @@
 	</head>
 	<body>
 		<div class="grid-container">
-			<div class="item1"></div>
-			<div class="item2"></div>
-			<div class="item3"></div>
-			<div class="item4"></div>
-			<div class="item5"></div>
-			<div class="item6"></div>
-			<div class="item7"></div>
-			<div class="item8"></div>
-			<div class="item9"></div>
-			<div class="item10"></div>
+			<div class="item1">
+				<img src="../image/banana.png" class="image" id="drag1" draggable="true" ondragstart="drag(event)">
+			</div>
+
+			<div class="item2">
+				<img src="../image/cabbage.png" class="image" id="drag2" draggable="true" ondragstart="drag(event)">
+			</div>
+
+			<div class="item3">
+				<img src="../image/tomato.png" class="image" id="drag3" draggable="true" ondragstart="drag(event)">
+			</div>
+
+			<div class="item4">
+				<img src="../image/salad.png" class="image" id="drag4" draggable="true" ondragstart="drag(event)">
+			</div>
+
+			<div class="item5">
+				<img src="../image/chips.png" class="image" id="drag5" draggable="true" ondragstart="drag(event)">
+			</div>
+
+			<div class="item6">
+				<img src="../image/chocolate.png" class="image" id="drag6" draggable="true" ondragstart="drag(event)">
+			</div>
+
+			<div class="item7">
+				<img src="../image/cake.png" class="image" id="drag7" draggable="true" ondragstart="drag(event)">
+			</div>
+
+			<div class="item8">
+				<img src="../image/hamburger.png" class="image" id="drag8" draggable="true" ondragstart="drag(event)">
+			</div>
+
+			<div class="fridge">
+				<img src="../image/fridge.png" class="image">
+			</div>
+
+			<div class="chick">
+				<img src="../image/chick.png" class="image">
+			</div>
+
+			<div class="inner" id="inner"></div>
+
+			<div class="bowl" ondrop="drop(event)" ondragover="allowDrop(event)">
+				<img src="../image/bowl.png" class="image">
+			</div>
 
 			<!-- <button onclick="part4()">next</button> -->
 			
@@ -28,81 +63,76 @@
 			.grid-container {
 
 				display: grid;
+				grid-template-columns: 11.625% 11.625% 11.625% 11.625% 11.625% 11.625% 11.625% 11.625%;
+				grid-template-rows: 11.625% 11.625% 11.625% 11.625% 11.625% 11.625% 11.625% 11.625%;
 				grid-template-areas: 
-				'. . . .'
-				'. . . .'
-				'chick chick myArea myArea'
-				'chick chick myArea myArea'
-				;
-				grid-gap: 10px;
+				'imag1 imag1 imag2 imag2 imag3 imag3 imag4 imag4'
+				'imag1 imag1 imag2 imag2 imag3 imag3 imag4 imag4'
+				'imag5 imag5 imag6 imag6 imag7 imag7 imag8 imag8'
+				'imag5 imag5 imag6 imag6 imag7 imag7 imag8 imag8'
+				'empty empty empty empty empty empty empty empty'
+				'chick chick chick inner inner fridge fridge fridge'
+				'chick chick chick inner inner fridge fridge fridge'
+				'chick chick chick bowl bowl fridge fridge fridge';
+				grid-gap: 1%;
 				background-color: pink;
 
 				width: 70vw;
 				height: 100vh;
-				background-size: contain;
-				padding: 10px;
+				padding: 1%;
 				box-sizing: border-box;
 
 			}
 
-
-			.item1 {
-			background: url(../image/banana.png) no-repeat center;
-
+			.grid-container > div {
+/*				background-color: rgba(255,255,255,0.8);
+				border: 2px solid;*/
+				text-align: center;
+				vertical-align: middle;
 			}
 
-			.item2 {
-				background: url(../image/cabbage.png) no-repeat center;
-			}
+			.item1 { grid-area: imag1; }
+			.item2 { grid-area: imag2; }
+			.item3 { grid-area: imag3; }
+			.item4 { grid-area: imag4; }
+			.item5 { grid-area: imag5; }
+			.item6 { grid-area: imag6; }
+			.item7 { grid-area: imag7; }
+			.item8 { grid-area: imag8; }
+			.chick { grid-area: chick; }
+			.fridge { grid-area: fridge; }
+			.inner { grid-area: inner; }
+			.bowl { grid-area: bowl; }
 
-			.item3 {
-				background: url(../image/tomato.png) no-repeat center;
-
-			}
-
-			.item4 {
-				background: url(../image/salad.png) no-repeat center;
-
-			}
-
-
-
-			.item5 {
-				background: url(../image/chips.png) no-repeat center;
-
-			}
-
-
-			.item6 {
-				background: url(../image/chocolate.png) no-repeat center;
-
-			}
-
-
-			.item7 {
-				background: url(../image/cake.png) no-repeat center;
-
-			}
-
-
-			.item8 {
-				background: url(../image/hamburger.png) no-repeat center;
-
-			}
-
-			.item10 {
-				grid-area: myArea;
-				background: url(../image/fridge.png) no-repeat right;
-				background-size: contain;
-			}
-
-			.item9 {
-				grid-area: chick;
-				background: url(../image/chick.png) no-repeat center;
-				background-size: contain;
+			.image {
+				display: inline-block; 
+				height: 100%; 
+				max-width: 100%;
 			}
 			
 		</style>
+
+		<script>
+			var fatFactor = 10;
+			function allowDrop(ev) {
+			    ev.preventDefault();
+			}
+
+			function drag(ev) {
+			    ev.dataTransfer.setData("text", ev.target.id);
+			}
+
+			function drop(ev) {
+			    ev.preventDefault();
+			    var data = ev.dataTransfer.getData("text");
+			    var inner = document.getElementById('inner');
+			    inner.appendChild(document.getElementById(data));
+			    setTimeout(function() {
+			    	inner.innerHTML = "";
+			    	(fatFactor++)/10;
+			    }, 1000);
+			}
+		</script>
 
 	</body>
 </html>

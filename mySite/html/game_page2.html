@@ -6,35 +6,35 @@
 	<body>
 		<div class="grid-container">
 			<div class="item1">
-				<img src="../image/banana.png" class="image" id="banana" draggable="true" ondragstart="drag(event)">
+				<img src="../image/banana.png" class="image" id="banana-V-0.9" draggable="true" ondragstart="drag(event)">
 			</div>
 
 			<div class="item2">
-				<img src="../image/cabbage.png" class="image" id="cabbage" draggable="true" ondragstart="drag(event)">
+				<img src="../image/cabbage.png" class="image" id="cabbage-V-0.9" draggable="true" ondragstart="drag(event)">
 			</div>
 
 			<div class="item3">
-				<img src="../image/tomato.png" class="image" id="tomato" draggable="true" ondragstart="drag(event)">
+				<img src="../image/tomato.png" class="image" id="tomato-V-0.9" draggable="true" ondragstart="drag(event)">
 			</div>
 
 			<div class="item4">
-				<img src="../image/salad.png" class="image" id="salad" draggable="true" ondragstart="drag(event)">
+				<img src="../image/salad.png" class="image" id="salad-V-0.9" draggable="true" ondragstart="drag(event)">
 			</div>
 
-			<div class="item5">
-				<img src="../image/chips.png" class="image" id="chips" draggable="true" ondragstart="drag(event)">
+			<div class="item5" id="chips-container" ondrop="dropBack(event)" ondragover="allowDrop(event)">
+				<img src="../image/chips.png" class="image" id="chips-F-1.2" draggable="true" ondragstart="drag(event)">
 			</div>
 
-			<div class="item6">
-				<img src="../image/chocolate.png" class="image" id="chocolate" draggable="true" ondragstart="drag(event)">
+			<div class="item6" id="chocolate-container" ondrop="dropBack(event)" ondragover="allowDrop(event)">
+				<img src="../image/chocolate.png" class="image" id="chocolate-F-1.2" draggable="true" ondragstart="drag(event)">
 			</div>
 
-			<div class="item7">
-				<img src="../image/cake.png" class="image" id="cake" draggable="true" ondragstart="drag(event)">
+			<div class="item7" id="cake-container" ondrop="dropBack(event)" ondragover="allowDrop(event)">
+				<img src="../image/cake.png" class="image" id="cake-F-1.2" draggable="true" ondragstart="drag(event)">
 			</div>
 
-			<div class="item8">
-				<img src="../image/hamburger.png" class="image" id="hamburger" draggable="true" ondragstart="drag(event)">
+			<div class="item8" id="hamburger-container" ondrop="dropBack(event)" ondragover="allowDrop(event)">
+				<img src="../image/hamburger.png" class="image" id="hamburger-F-1.2" draggable="true" ondragstart="drag(event)">
 			</div>
 
 			<div class="fridge">
@@ -45,14 +45,17 @@
 				<img src="../image/chick.png" class="image" id="chick">
 			</div>
 
-			<div class="inner" id="inner"></div>
+			<div class="inner" id="inner" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
 
 			<div class="bowl" ondrop="drop(event)" ondragover="allowDrop(event)">
 				<img src="../image/bowl.png" class="image">
 			</div>
 
-			<!-- <button onclick="part4()">next</button> -->
-			
+			<div class="message">
+				<p id="message"></p>
+
+			</div>
+
 		</div>
 
 		<style type="text/css">
@@ -65,7 +68,7 @@
 				display: grid;
 				grid-template-columns: 11.625% 11.625% 11.625% 11.625% 11.625% 11.625% 11.625% 11.625%;
 				grid-template-rows: 11.625% 11.625% 11.625% 11.625% 11.625% 11.625% 11.625% 11.625%;
-				grid-template-areas: 
+				grid-template-areas:
 				'imag1 imag1 imag2 imag2 imag3 imag3 imag4 imag4'
 				'imag1 imag1 imag2 imag2 imag3 imag3 imag4 imag4'
 				'imag5 imag5 imag6 imag6 imag7 imag7 imag8 imag8'
@@ -103,13 +106,14 @@
 			.fridge { grid-area: fridge; }
 			.inner { grid-area: inner; }
 			.bowl { grid-area: bowl; }
+			.message { grid-area: empty; }
 
 			.image {
-				display: inline-block; 
-				height: 90%; 
+				display: inline-block;
+				height: 90%;
 				max-width: 100%;
 			}
-			
+
 		</style>
 
 		<script>
@@ -124,41 +128,44 @@
 			}
 
 			function drop(ev) {
-			    ev.preventDefault();
-			    var data = ev.dataTransfer.getData("text");
-			    var inner = document.getElementById('inner');
-			    inner.appendChild(document.getElementById(data));
+		    ev.preventDefault();
+		    var data = ev.dataTransfer.getData("text");
+		    var inner = document.getElementById('inner');
+		    inner.appendChild(document.getElementById(data));
 
-			    var chick = document.getElementById('chick');
+		    var chick = document.getElementById('chick');
 
-			    setTimeout(function() {
-			    	
+				var [item_id, series, fatFactor] = data.split('-');
 
-			    	inner.innerHTML = "";
-			    	if (data == "banana") {
-			    		fatFactor = 0.9;
-			    	} else if (data == "cabbage") {
-			    		fatFactor = 0.9;
-			    	} else if (data == "tomato") {
-			    		fatFactor = 0.9;
-			    	} else if (data == "salad") {
-			    		fatFactor = 0.9;
-			    	} else if (data == "chips") {
-			    		fatFactor = 1.2;
-			    	} else if (data == "chocolate") {
-			    		fatFactor = 1.2;
-			    	} else if (data == "cake") {
-			    		fatFactor = 1.2;
-			    	} else if (data == "hamburger") {
-			    		fatFactor = 1.2;
-			    	}
 
-			    	chick.width *= fatFactor;
+				if(series == 'V') {
+					alert(`I love ${item_id}, thank you!`);
+					document.getElementById("message").innerHTML = "I become prettier!";
+					inner.innerHTML = "";
+					chick.width *= fatFactor;
 
-			    }, 1000);
 
-			}  
-			    
+				} else if (series == 'F') {
+					if (confirm("This food has high calories, are you sure to feed?")) {
+						var txt = "oh my god, look at my chubby face!<br>Let's do some exercise!";
+						document.getElementById("message").innerHTML = txt;
+
+						inner.innerHTML = "";
+						chick.width *= fatFactor;
+
+					} else {
+							document.getElementById("message").innerHTML = "Good choice!!<br>Now let's move it back.";
+					}
+				}
+			}
+
+			function dropBack(ev) {
+				ev.preventDefault();
+				var dataBack = ev.dataTransfer.getData("text");
+				ev.target.appendChild(document.getElementById(dataBack));
+				document.getElementById("message").innerHTML = "Good Job!";
+			}
+
 		</script>
 
 	</body>

@@ -41,7 +41,7 @@
 				<img src="../image/fridge.png" class="image">
 			</div>
 
-			<div class="chick">
+			<div class="chick" id="chick" ondrop="drop(event)" ondragover="allowDrop(event)">
 				<img src="../image/chick.png" class="image" id="chick">
 			</div>
 
@@ -94,16 +94,16 @@
 				vertical-align: middle;
 			}
 
-			.item1 { grid-area: imag1; }
-			.item2 { grid-area: imag2; }
-			.item3 { grid-area: imag3; }
-			.item4 { grid-area: imag4; }
-			.item5 { grid-area: imag5; }
-			.item6 { grid-area: imag6; }
-			.item7 { grid-area: imag7; }
-			.item8 { grid-area: imag8; }
-			.chick { grid-area: chick; }
-			.fridge { grid-area: fridge; }
+			.item1 { grid-area: imag1; position: relative;}
+			.item2 { grid-area: imag2; position: relative;}
+			.item3 { grid-area: imag3; position: relative;}
+			.item4 { grid-area: imag4; position: relative;}
+			.item5 { grid-area: imag5; position: relative;}
+			.item6 { grid-area: imag6; position: relative;}
+			.item7 { grid-area: imag7; position: relative;}
+			.item8 { grid-area: imag8; position: relative;}
+			.chick { grid-area: chick; position: absolute;}
+			.fridge { grid-area: fridge; position: absolute;}
 			.inner { grid-area: inner; }
 			.bowl { grid-area: bowl; }
 			.message {
@@ -140,7 +140,7 @@
 			function drop(ev) {
 		    ev.preventDefault();
 		    var data = ev.dataTransfer.getData("text");
-		    var inner = document.getElementById('inner');
+		    var inner = document.getElementById('chick');
 		    inner.appendChild(document.getElementById(data));
 
 		    var chick = document.getElementById('chick');
